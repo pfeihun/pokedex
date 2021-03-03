@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+//components
+import Home from './Home';
+import Nav from './components/Nav/Nav'
+import Pokedex from './components/Pokedex/Pokedex';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <div className="apps">
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route  path="/pokedex" component={Pokedex}/>
+          
+        </Switch>
+      </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

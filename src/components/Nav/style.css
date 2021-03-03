@@ -1,0 +1,38 @@
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid white;
+    color: white;
+}
+nav img{
+    margin: 10px;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;  
+}
+nav li:first-child{
+    margin-left: 10px;
+}
+nav li{
+    margin: auto;
+    margin-right: 20px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+nav a:hover{
+    cursor:pointer
+}
+
+.pokeball-nav{
+    height: 5vmin;
+    display: inline-block;
+    margin-right: 10px;
+}
