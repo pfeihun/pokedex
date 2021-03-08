@@ -93,10 +93,7 @@ function Pokedex() {
                             {pokemonData.map((pokemon, i) =>{
                               return <PokemonCard 
                                 key ={i}
-                                name={pokemon.name} 
-                                id={pokemon.id}
-                                img={pokemon.sprites.other.dream_world.front_default} 
-                                type = {pokemon.types}
+                                pokemonData={pokemon}
                                 />
                             })}
                             

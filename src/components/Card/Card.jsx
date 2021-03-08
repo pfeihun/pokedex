@@ -1,7 +1,28 @@
-import React from "react";
-import './style.css';
+import React, {useRef, useMemo, useState, useEffect} from "react";
+import './css/main.css';
+import arrow from '../../arrow.svg';
+import gsap from "gsap";
 
-const PokemonCard = (props) => {
+const PokemonCard = (pokemonData) => {
+  
+  let timeline = useMemo(() => gsap.timeline({paused: true}), []);
+  let pokemonRef = useRef(0);
+  let nextRef = useRef(0);
+  let divRef = useRef(0);
+  let labelRef = useRef(0);
+  let iconRef = useRef(0);
+  let [play, setPlay] = useState(false);
+
+  useEffect(() =>{
+    timeline
+    .to([labelRef.current],{opacity: 0, height: 0, position: 'absolute', duration: 0.2 })
+    .to([nextRef.current],{borderRadius: '50%', width: '2.5em', height: '2.5em', ease: "Elastic.easeOut.config(.7, 0.3)", duration: 1})
+    .to([iconRef.current], {opacity: 100, rotate:90, duration: 1, ease:'elastic'})
+    .to([pokemonRef.current],{height:"500px", ease: "Elastic.easeOut.config(.7, 0.3)", duration: 1})
+    .to([divRef.current.childNodes], {display: 'block', clipPath:'circle(100% at 50% 50%)', duration: 1}); 
+  
+  }, []);
+  
    {/* // a több tipus összevonása
     let classer = props.type.map((type, i) =>{
         if(i%2==1){
@@ -14,18 +35,43 @@ const PokemonCard = (props) => {
     //a változó stringgé alakítása (különben a react hibát dob!) majd a , lecserélése _
     let classType = classer.toString().replace(/,/g, '_');
       */}
-      let classType = props.type[0].type.name
+
+      useEffect(()=>{
+        if(play){
+          timeline.play();
+        }else{
+          timeline.reverse();
+        }
+      }, [play]);
+      let pokemon = pokemonData.pokemonData;
+      let img = pokemon.sprites.other.dream_world.front_default
+
   return (
-    <div className={"pokemon pokemon" + "-" + classType}>
+    <div className="pokemon" ref={pokemonRef}>
       <h4>
-        {props.name} #{props.id}
+        {pokemon.name} #{pokemon.id}
       </h4>
       <div className="types">
-        {props.type.map(types => { return (<p className={types.type.name}> {types.type.name} </p>)})}
+        {pokemon.types.map(type => { return (<p className={type.type.name}> {type.type.name} </p>)})}
       </div>
       <div className="image">
-        <img src={props.img} alt={props.name} />
+        <img src={img} alt={pokemon.name} />
       </div>
+      <div className="poke_btn">
+        <button className="btn_more" ref={nextRef} onClick={() => setPlay(!play)}>
+          <span className="labelMore" ref={labelRef}>{play ? " " : "More"}</span>
+          <span class="icon" > 
+                <img src={arrow} alt="arrow" ref={iconRef}/>
+          </span>
+        </button>
+        </div>
+        <div  className="more">
+          <div ref={divRef}>
+              <p>height: {pokemon.height}</p>
+              <p>Weight: {pokemon.weight}</p>
+          </div>
+          
+        </div>
     </div>
   );
 };

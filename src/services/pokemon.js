@@ -1,4 +1,4 @@
-
+// Catch the first pokelist
 export async function catchPokemon(url){
     return new Promise(( resolve ) => {
         fetch(url)
@@ -11,7 +11,7 @@ export async function catchPokemon(url){
     })
 }
 
-
+// catch the individuals from the pokelist
 export async function getPoke(url){
     return new Promise(( resolve) => {
        fetch(url)
