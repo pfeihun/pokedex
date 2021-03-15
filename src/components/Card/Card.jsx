@@ -15,11 +15,11 @@ const PokemonCard = (pokemonData) => {
 
   useEffect(() =>{
     timeline
-    .to([labelRef.current],{opacity: 0, height: 0, position: 'absolute', duration: 0.2 })
-    .to([nextRef.current],{borderRadius: '50%', width: '2.5em', height: '2.5em', ease: "Elastic.easeOut.config(.7, 0.3)", duration: 1})
+    .to([labelRef.current],{opacity: 0, height: 0, position: 'absolute', duration: 0.1 })
+    .to([nextRef.current],{borderRadius: '50%', width: '2.5em', height: '2.5em', ease: "Elastic.easeOut.config(.7, 0.3)", duration: 0.6})
     .to([iconRef.current], {opacity: 100, rotate:90, duration: 1, ease:'elastic'})
-    .to([pokemonRef.current],{height:"500px", ease: "Elastic.easeOut.config(.7, 0.3)", duration: 1})
-    .to([divRef.current.childNodes], {display: 'block', clipPath:'circle(100% at 50% 50%)', duration: 1}); 
+    .to([pokemonRef.current],{height:"500px", ease: "Elastic.easeOut.config(.7, 0.3)", duration: 0.6})
+    .to([divRef.current.childNodes], {display: 'block', clipPath:'circle(100% at 50% 50%)', duration: 0.5}); 
   
   }, []);
   
@@ -66,9 +66,12 @@ const PokemonCard = (pokemonData) => {
         </button>
         </div>
         <div  className="more">
-          <div ref={divRef}>
-              <p>height: {pokemon.height}</p>
-              <p>Weight: {pokemon.weight}</p>
+          <div ref={divRef}>             
+              <p>Health Point: {pokemon.stats[0].base_stat}</p>
+              <p>Attack Point: {pokemon.stats[1].base_stat}</p>
+              <p>Defense Point: {pokemon.stats[2].base_stat}</p>
+              <p>height: {pokemon.height} "</p>
+              <p>Weight: {pokemon.weight} lbs</p>
           </div>
           
         </div>
