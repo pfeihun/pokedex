@@ -10,12 +10,12 @@ function Home (){
                 <p>It's simple! Just choose a menu option and enjoy!</p>
                 <div className="home_container">
                     <div className="home_card">
-                        <h4>Pokedex</h4>
+                        <h4>Pokemons</h4>
                         <p>Hier you find the all of Pokemon</p>
                     </div>
                     <div className="home_card">
                         <h4>PokeSearch</h4>
-                        <p>Hier you find the all of Pokemon</p>
+                        <p>Hier you can search </p>
                     </div>
                     <div className="home_card">
                         <h4>Impress</h4>

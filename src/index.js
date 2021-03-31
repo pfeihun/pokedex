@@ -8,6 +8,7 @@ import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Home';
 import Nav from './components/Nav/Nav'
 import Pokedex from './components/Pokedex/Pokedex';
+import SearchPoke from './components/SearchPoke/SearchPoke';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,9 +16,9 @@ ReactDOM.render(
       <div className="apps">
         <Nav />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route  path="/pokedex" component={Pokedex}/>
-          
+          <Route path="/" exact     component={Home} />
+          <Route path="/pokedex"    component={Pokedex}/>
+          <Route path="/SearchPoke" component={SearchPoke}/>
         </Switch>
       </div>
     </Router>

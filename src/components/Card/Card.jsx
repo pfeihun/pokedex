@@ -18,7 +18,7 @@ const PokemonCard = (pokemonData) => {
     .to([labelRef.current],{opacity: 0, height: 0, position: 'absolute', duration: 0.1 })
     .to([nextRef.current],{borderRadius: '50%', width: '2.5em', height: '2.5em', ease: "Elastic.easeOut.config(.7, 0.3)", duration: 0.6})
     .to([iconRef.current], {opacity: 100, rotate:90, duration: 1, ease:'elastic'})
-    .to([pokemonRef.current],{height:"500px", ease: "Elastic.easeOut.config(.7, 0.3)", duration: 0.6})
+    .to([pokemonRef.current],{height:"550px", ease: "Elastic.easeOut.config(.7, 0.3)", duration: 0.6})
     .to([divRef.current.childNodes], {display: 'block', clipPath:'circle(100% at 50% 50%)', duration: 0.5}); 
   
   }, []);
@@ -44,7 +44,12 @@ const PokemonCard = (pokemonData) => {
         }
       }, [play]);
       let pokemon = pokemonData.pokemonData;
-      let img = pokemon.sprites.other.dream_world.front_default
+      /* 
+        Stackoverflow: " if you access JSON with the array syntax [] all nested JSON keys should follow that syntax" 
+        - or identifier expected error.
+        And here I muss use this becouse one of them has a hypen!
+      */
+      let img = pokemon['sprites']['other']['official-artwork']['front_default']
 
   return (
     <div className="pokemon" ref={pokemonRef}>
@@ -60,7 +65,7 @@ const PokemonCard = (pokemonData) => {
       <div className="poke_btn">
         <button className="btn_more" ref={nextRef} onClick={() => setPlay(!play)}>
           <span className="labelMore" ref={labelRef}>{play ? " " : "More"}</span>
-          <span class="icon" > 
+          <span className="icon" > 
                 <img src={arrow} alt="arrow" ref={iconRef}/>
           </span>
         </button>
@@ -70,8 +75,8 @@ const PokemonCard = (pokemonData) => {
               <p>Health Point: {pokemon.stats[0].base_stat}</p>
               <p>Attack Point: {pokemon.stats[1].base_stat}</p>
               <p>Defense Point: {pokemon.stats[2].base_stat}</p>
-              <p>height: {pokemon.height} "</p>
-              <p>Weight: {pokemon.weight} lbs</p>
+              <p>height: {pokemon.height}0 cm</p>
+              <p>Weight: {pokemon.weight / 10} kg</p>
           </div>
           
         </div>
