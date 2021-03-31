@@ -79,8 +79,7 @@ function Pokedex() {
       <>
           {
               loading ? 
-                        <>
-                        
+                        <>                       
                         <div className="App">
                             <div className="App-header">
                                 <img src={logo} className="pokeball" alt="PokeBall" />

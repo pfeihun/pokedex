@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
-import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 //components
 import Home from './Home';
 import Nav from './components/Nav/Nav'
@@ -14,7 +14,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <div className="apps">
-        <Nav />
+        <Nav /> 
         <Switch>
           <Route path="/" exact     component={Home} />
           <Route path="/pokedex"    component={Pokedex}/>

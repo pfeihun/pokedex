@@ -52,12 +52,12 @@ const PokemonCard = (pokemonData) => {
       let img = pokemon['sprites']['other']['official-artwork']['front_default']
 
   return (
-    <div className="pokemon" ref={pokemonRef}>
+    <div className="pokemon" ref={pokemonRef} key={pokemon.id}>
       <h4>
         {pokemon.name} #{pokemon.id}
       </h4>
       <div className="types">
-        {pokemon.types.map(type => { return (<p className={type.type.name}> {type.type.name} </p>)})}
+        {pokemon.types.map(type => { return (<p className={type.type.name} key={type.slot}> {type.type.name} </p>)})}
       </div>
       <div className="image">
         <img src={img} alt={pokemon.name} />

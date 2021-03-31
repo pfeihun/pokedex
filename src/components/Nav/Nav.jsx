@@ -11,11 +11,11 @@ const Nav = () =>{
             <ul>
                 <li><Link to='/'> Home </Link></li>
                 <li> <Link to='/pokedex'> Pokemons </Link> </li>
-                <li><Link to='/SearchPoke'> Poke Search</Link> </li>     
+                <li>< Link to='/SearchPoke'> Poke Search</Link> </li>     
                 
-                <Link >
+               {/*} <Link >
                 <li> Impressum </li>
-                </Link>
+                </Link>*/}
             </ul>
             
         </nav>
